@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-1@peimj8*w=04m80jvdtz+6%ge5zzp*miebrc9jm73ons_h==6"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*','18.118.227.161']
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "employee_register",
     "pages",
+    "trial",
     "crispy_forms",
     "rest_framework"
 ]
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "trial.custom_middleware.Custom403Middleware",
 ]
 
 ROOT_URLCONF = "Django_app.urls"

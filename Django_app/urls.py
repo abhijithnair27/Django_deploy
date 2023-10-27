@@ -15,9 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from rest_framework.routers import DefaultRouter
+from trial.views import GuideViewSet, custom_unauthorized_page
 
+handler500 = 'employee_register.views.error_500'
+handler404 = 'employee_register.views.error_404'
+router = DefaultRouter()
+router.register(r'guide', GuideViewSet)
 urlpatterns = [
     path("", include("pages.urls")),
     path("admin/", admin.site.urls),
-    path("employee/", include('employee_register.urls'))
+    path("employee/", include('employee_register.urls')),
+    path("api/",  include(router.urls)),
+    path('unauthorized/', custom_unauthorized_page, name='custom_unauthorized_page'),
 ]

@@ -1,5 +1,5 @@
 from pickle import GET
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, HttpResponse
 from .forms import EmployeeForm
 from .models import Employee
 from django.http import JsonResponse
@@ -10,6 +10,13 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
+
+def error_404(request, exception):
+    data = {}
+    return HttpResponse("this is error")
+
+def error_500(request):
+    return HttpResponse("this is 500 error")
 
 
 def employee_List(request):
